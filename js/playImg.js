@@ -5,10 +5,14 @@ var btnVal = 0;
 
 function showImage(){
 	var op = 0.1;  // initial opacity
+	// myImage.style.visibility = hidden;
 	myImage.style.opacity = 0
-
+	setTimeout(null, 100)
 	myImage.setAttribute("src", imageArray[imageIndex]);
 	myTxt.innerHTML = txtArray[imageIndex];
+	// myImage.style.visibility = visible;
+
+
 	imageIndex++;
 	if(imageIndex >= len){
 		imageIndex = 0;
@@ -77,4 +81,3 @@ var imgInterval;
 var buttonInterval;
 
 event();
-loadIamges();
