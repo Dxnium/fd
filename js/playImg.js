@@ -16,7 +16,7 @@ function showImage(){
 
 function play(){
 	if (start.getDate() > 06 ){
-		start = new Date(2023, 4, 06, 19, 00);
+		start = new Date(2023, 4, 06, 18, 00);
 	}else{
 		start = new Date(2023, 0, 24, 10, 00);
 
