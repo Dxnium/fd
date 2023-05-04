@@ -4,14 +4,26 @@ btn.style.opacity = 0;
 var btnVal = 0;
 
 function showImage(){
-	//document.getElementById("imgTxt").style.opacity = 0;
+	var op = 0.1;  // initial opacity
+	myImage.style.opacity = 0
+
 	myImage.setAttribute("src", imageArray[imageIndex]);
 	myTxt.innerHTML = txtArray[imageIndex];
-	//document.getElementById("imgTxt").style.opacity = 1 - flag;
 	imageIndex++;
 	if(imageIndex >= len){
 		imageIndex = 0;
 	}
+
+	var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        myImage.style.opacity = op;
+        myImage.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 50);
+
+	setTimeout(showImage, 5000);
 }
 
 function play(){
@@ -21,20 +33,12 @@ function play(){
 		start = new Date(2023, 0, 24, 10, 00);
 
 	}
-
-
-	if(t == 0){
-		myImage.setAttribute("src", "");
-		myTxt.innerHTML = "";
-		imageIndex = 0;
-		clearInterval(showImageInterval);
-	}
 	flag = 1 - flag;
 	document.getElementById("typeDiv").style.opacity = flag;
 	document.getElementById("imgTxt").style.opacity = 1 - flag;
 	if(t == 0){
 		//setTimeout(showImage, 1000);
-		setInterval(showImage, 5000);
+		showImage()
 	}
 	t++;
 }
@@ -50,6 +54,10 @@ function buttonFadeIn(){
 			ok += 1;
 		}
 	}
+}
+
+function loadIamge(){
+	document.getElementById("img").setAttribute("src",imageArray[0])
 }
 
 function event(){
