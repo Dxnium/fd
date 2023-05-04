@@ -21,6 +21,8 @@ function play(){
 		start = new Date(2023, 0, 24, 10, 00);
 
 	}
+
+
 	if(t == 0){
 		myImage.setAttribute("src", "");
 		myTxt.innerHTML = "";
@@ -37,16 +39,6 @@ function play(){
 	t++;
 }
 
-function preshowImage(){
-	document.getElementById("imgTxt").style.opacity = 0;
-	myImage.setAttribute("src", imageArray[imageIndex]);
-	myTxt.innerHTML = txtArray[imageIndex];
-	imageIndex++;
-	if(imageIndex >= len){
-		imageIndex = 0;
-	}
-}
-
 function buttonFadeIn(){
 	if(btnVal < 1){
 		btnVal += 0.025;
@@ -60,11 +52,9 @@ function buttonFadeIn(){
 	}
 }
 
-
-
 function event(){
 
-	showImageInterval = setInterval(preshowImage, 100);
+	// showImageInterval = setInterval(preshowImage, 100);
 
 	imgInterval = setInterval(function (){
 		if(ok == 3){
@@ -79,3 +69,4 @@ var imgInterval;
 var buttonInterval;
 
 event();
+loadIamges();
